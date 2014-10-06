@@ -23,7 +23,7 @@ public class InputMatcher {
 	
 	//Methods
 	
-	// Takes Regular Expression and string pattern and returns an array of results.
+	//Takes Regular Expression and string pattern and returns an array of results.
 	public ArrayList<String> matcherEngine(String regex, String user_input) {
 		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(user_input);
@@ -31,24 +31,19 @@ public class InputMatcher {
 		
 		while(matcher.find()) {
 			matchesArray.add(matcher.group());
-			//TODO	System.out.println(matchesArray);(Remove) Just a test aspect of the program to make sure everything is alright
 		}
 		return matchesArray;
 	}
 
-	public ArrayList<String> priceFinder(String userInput) {
-		// TODO Auto-generated method stub
-		return null;
+	//Invokes matcher engine to find prices listed as floats.
+	public String priceFinder(String userInput) {
+		String float_regex = "\\d*\\.+\\d*";
+		ArrayList<String> me = matcherEngine(float_regex, userInput);
+		if (me.size() == 1 ) {
+			return me.get(0);
+		} else {
+			return "ERROR_MESSAGE";
+		}
 	}
-	
-	// Need to figure out how to cast a "matcher" object to a float 
-	// or extract whatever is in the matcher object.
-
-//	public float priceFinder(String user_input) {
-//		// regex to find float numbers ();
-//		String float_finder = "\\d*\\.+\\d*";
-//		matcherEngine(float_finder, user_input);
-//		return 10.00f; // forced return result to make the test pass and stop eclipse from complaining.
-//	}
 		
 }
