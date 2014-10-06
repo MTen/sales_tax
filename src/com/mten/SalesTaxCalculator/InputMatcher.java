@@ -23,15 +23,32 @@ public class InputMatcher {
 	
 	//Methods
 	
-	// getting the following error 
-	// Error: Could not find or load main class com.mten.SalesTaxCalculator.PracticeMatcher
-	
-	// need to figure out how to convert a "matcher" object to a float or extract whatever is in the matcher object.
-	public float priceFinder(String user_input) {
-		Pattern pattern = Pattern.compile("\\d*\\.+\\d*");
+	// Takes Regular Expression and string pattern and returns an array of results.
+	public ArrayList<String> matcherEngine(String regex, String user_input) {
+		Pattern pattern = Pattern.compile(regex);
 		Matcher matcher = pattern.matcher(user_input);
-		System.out.println(matcher);
-		return 10.00f; // forced return result to make the test pass and stop eclipse from complaining.
+		ArrayList<String> matchesArray = new ArrayList<String>();
+		
+		while(matcher.find()) {
+			matchesArray.add(matcher.group());
+			//TODO	System.out.println(matchesArray);(Remove) Just a test aspect of the program to make sure everything is alright
+		}
+		return matchesArray;
 	}
+
+	public ArrayList<String> priceFinder(String userInput) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	// Need to figure out how to cast a "matcher" object to a float 
+	// or extract whatever is in the matcher object.
+
+//	public float priceFinder(String user_input) {
+//		// regex to find float numbers ();
+//		String float_finder = "\\d*\\.+\\d*";
+//		matcherEngine(float_finder, user_input);
+//		return 10.00f; // forced return result to make the test pass and stop eclipse from complaining.
+//	}
 		
 }
