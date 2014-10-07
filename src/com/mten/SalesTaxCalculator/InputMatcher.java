@@ -5,6 +5,7 @@ import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
+@SuppressWarnings("unused")
 public class InputMatcher {
 	//Fields package private
 	String name;
@@ -68,12 +69,15 @@ public class InputMatcher {
 			return me.get(0);
 		} else {
 			return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
-		}
-		
-//		String[] inputSplitUp = userInput.split("\\s+");
-//		Boolean unit_float_check = me.get(0).equals(inputSplitUp[0]);
-		
+		}	
 		
 	}
-		
+	
+	//Searches user input for only words comprised of letters
+	public ArrayList<String> productFinder(String userInput) {
+		String word_regex = "[a-zA-Z]+";
+		ArrayList<String> me = matcherEngine(word_regex, userInput);
+		System.out.println(me);
+		return me;
+	}
 }
