@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import junit.framework.TestCase;
 
 public class InputMatcherTest extends TestCase {
+	//////////
+	//Fields//
+	//////////
+	
 	private String input_1;
 	private String input_2;
 	private String broken_floater;
@@ -17,8 +21,14 @@ public class InputMatcherTest extends TestCase {
 	private String price;
 	private String price_1;
 	private String price_2;
+	private String ERROR_MESSAGE;
+	private String integer_regex;
 	
 	private InputMatcher im = new InputMatcher("Test");
+	
+	//////////////
+	//Test Setup//
+	//////////////
 	
 	public void setup() {
 		price_1 = "10.00";
@@ -29,14 +39,12 @@ public class InputMatcherTest extends TestCase {
 		broken_integer = "2 imported 5 smell";
 		reverso_input = "1.00 box of books 5";
 		float_regex= "\\d*\\.+\\d*";
+		integer_regex= "(?<=\\s|^)\\d+(?=\\s|$)";
 		myArray = new ArrayList<String>();
 		userInput = new ArrayList<String>();
 		result = null;
 		price = null;
-	}
-
-	public void log(ArrayList<String> myArray2 ){
-		System.out.println(myArray2);
+		ERROR_MESSAGE = "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
 	}
 
 	//Constructor Test
@@ -44,14 +52,14 @@ public class InputMatcherTest extends TestCase {
 		setup();
 		assertEquals( "Test", im.name);
 		assertTrue( im instanceof InputMatcher);
-		assertTrue( im.quantity instanceof ArrayList);
-		assertTrue( im.price instanceof ArrayList);
-		assertTrue( im.item instanceof ArrayList );
 	}
 	
 	//Regular Expression input verification method
 	
-	//Floats
+	//////////
+	//Floats//
+	//////////
+	
 	public void testMatcherEngine_Floats() {
 	// Was getting stuck on testing arrays so this is my hack solution.
 		
@@ -106,32 +114,45 @@ public class InputMatcherTest extends TestCase {
 		result = price.equals(myArray.get(0));
 		assertTrue(result);
 		
-		//Double Float Test
+		//Double float test
 		setup(); 
 		myArray.add("2.00"); myArray.add("5.50");
 		price = im.priceFinder(broken_floater);
-		assertEquals("ERROR_MESSAGE", price);
+		assertEquals(ERROR_MESSAGE, price);
 		
 		//Reversed input
 		setup();
 		price = im.priceFinder(reverso_input);
-		assertEquals("ERROR_MESSAGE", price);
+		assertEquals(ERROR_MESSAGE, price);
 	}
 	
 	public void testMatcherEngine_Ints(){
-		
+
+	//Single Float Test with numbers after decimal
 		setup();
 		myArray.add("1");
-		//userInput = im.matcherEngine(int_regex, input_1);
-		
-	
+		userInput = im.matcherEngine(integer_regex, input_1);
 		result = userInput.equals(myArray);
-		//assertTrue(result);
+		assertTrue(result);
 		
-//Single Float Test with numbers after decimal
+	//Single Float Test with numbers after decimal
 		setup();
 		myArray.add("2");
-		//userInput = im.matcherEngine(int_regex, input_2);
+		userInput = im.matcherEngine(integer_regex, input_2);
+	
+		result = userInput.equals(myArray);
+		assertTrue(result);
+		
+		//Double integer test
+		setup(); 
+		myArray.add("2"); myArray.add("5");
+		price = im.unitFinder(broken_integer);
+		assertEquals(ERROR_MESSAGE, price);
+		
+		//Reversed input
+//		setup();
+//		price = im.unitFinder(reverso_input);
+//		assertEquals(ERROR_MESSAGE, price);
 	}
 	
 

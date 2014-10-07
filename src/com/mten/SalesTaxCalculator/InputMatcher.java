@@ -8,18 +8,12 @@ import java.util.regex.Matcher;
 public class InputMatcher {
 	//Fields package private
 	String name;
-	ArrayList<Integer> quantity;
-	ArrayList<Float> price;
-	ArrayList<String> item;
 	
 	//Constructor
 		//InputMatcher is a concrete class in case different versions of 
 		//the matcher need to exist. (Annually updated, change of business, etc)
 	public InputMatcher(String name) {
 		this.name = name;
-		quantity = new ArrayList<Integer>();
-		price = new ArrayList<Float>();
-		item = new ArrayList<String>();	
 	}
 	
 	//Methods
@@ -51,21 +45,35 @@ public class InputMatcher {
 		Boolean price_location_check = me.get(0).equals(inputSplitUp[lastInput]);
 		//Checks to make sure only one price is listed in the userInput
 		if (me.size() == 1 && price_location_check) {
-			System.out.println("TRUE");
+			System.out.println("price: " + me.get(0));
 			return me.get(0);
 		} else {
-			System.out.println("Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)");
 			return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
 		}
 	}
 	
 	public String unitFinder(String userInput) {
 		
-		// Splitting the userInput on the spaces to capture first value
+		//Splitting the userInput on the spaces to capture first value
+		
+		//Match less than 1 or equal to white space characters or beginning of line. 1 or more digit characters. 
+		//Match one or more whitespace character or end of line character 
+		String integer_regex = "(?<=\\s|^)\\d+(?=\\s|$)";
+		ArrayList<String> me = matcherEngine(integer_regex, userInput);
 		String[] inputSplitUp = userInput.split("\\s+");
-		int lastInput = inputSplitUp.length;
-		Boolean unit_float_check = me.get(0).equals(inputSplitUp[0]);
-		return "Error Message";
+		Boolean unit_location_check = me.get(0).equals(inputSplitUp[0]);
+
+		if (me.size() == 1 && unit_location_check) {
+			System.out.println("units: " + me.get(0));
+			return me.get(0);
+		} else {
+			return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
+		}
+		
+//		String[] inputSplitUp = userInput.split("\\s+");
+//		Boolean unit_float_check = me.get(0).equals(inputSplitUp[0]);
+		
+		
 	}
 		
 }
