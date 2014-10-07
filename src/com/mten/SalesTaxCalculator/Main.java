@@ -12,9 +12,10 @@ public class Main {
 	// Using this as my "scratch pad"
 	InputMatcher im = new InputMatcher("Test");
 	
-	String stuff = im.priceFinder("1 stuff 5.00");
+//	String stuff = im.priceFinder("1 stuff 5.00");
+	String userInput = "1.00 stuff 3";
+	im.priceFinder(userInput);
 	
-	System.out.println(stuff);
 	}
 
 }

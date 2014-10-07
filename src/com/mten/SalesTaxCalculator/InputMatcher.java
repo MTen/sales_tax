@@ -1,6 +1,7 @@
 package com.mten.SalesTaxCalculator;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.regex.Pattern;
 import java.util.regex.Matcher;
 
@@ -35,15 +36,36 @@ public class InputMatcher {
 		return matchesArray;
 	}
 
+	//If matcherEngine finds only one price and only one unit quantity entry
+	//and both are in the correct location. (following syntax) then I don't 
+	//need to create a separate method to check for price being a INT and unit being a float explictly.
+	
 	//Invokes matcher engine to find prices listed as floats.
 	public String priceFinder(String userInput) {
+		//
 		String float_regex = "\\d*\\.+\\d*";
 		ArrayList<String> me = matcherEngine(float_regex, userInput);
-		if (me.size() == 1 ) {
+		
+		String[] inputSplitUp = userInput.split("\\s+");
+		int lastInput = inputSplitUp.length - 1;
+		Boolean price_location_check = me.get(0).equals(inputSplitUp[lastInput]);
+		//Checks to make sure only one price is listed in the userInput
+		if (me.size() == 1 && price_location_check) {
+			System.out.println("TRUE");
 			return me.get(0);
 		} else {
-			return "ERROR_MESSAGE";
+			System.out.println("Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)");
+			return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
 		}
+	}
+	
+	public String unitFinder(String userInput) {
+		
+		// Splitting the userInput on the spaces to capture first value
+		String[] inputSplitUp = userInput.split("\\s+");
+		int lastInput = inputSplitUp.length;
+		Boolean unit_float_check = me.get(0).equals(inputSplitUp[0]);
+		return "Error Message";
 	}
 		
 }
