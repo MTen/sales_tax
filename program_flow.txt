@@ -1,6 +1,6 @@
-UserInput takes initial input and checks it for glaring errors (null, non-string entry) if passes creates UserInput OBJECT
+X UserInput takes initial input and checks it for glaring errors (null, non-string entry) if passes sets input to UserInput OBJECT
 	
-OrderParser ABSTRACT_OBJECT_OR_METHOD takes each line from UserInput OBJECT and puts it into an UserInput.inputArray ( .split(\n))
+X InputParser ABSTRACT_OBJECT_OR_METHOD takes each line from UserInput OBJECT and puts it into an UserInput.inputArray ( .split(\n))
 
 InputMatcher evaluates each index of inputArray, creates a Transaction object for each 
 	

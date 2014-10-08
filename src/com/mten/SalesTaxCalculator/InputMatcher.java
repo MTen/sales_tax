@@ -7,17 +7,23 @@ import java.util.regex.Matcher;
 
 @SuppressWarnings("unused")
 public class InputMatcher {
-	//Fields package private
+	////////////////////////
+	//	Fields package private
+	////////////////////////
 	String name;
 	
-	//Constructor
+	////////////////////////
+	//	Constructor
+	////////////////////////
 		//InputMatcher is a concrete class in case different versions of 
 		//the matcher need to exist. (Annually updated, change of business, etc)
 	public InputMatcher(String name) {
 		this.name = name;
 	}
 	
-	//Methods
+	////////////////////////
+	//	Methods
+	////////////////////////
 	
 	//Takes Regular Expression and string pattern and returns an array of results.
 	public ArrayList<String> matcherEngine(String regex, String user_input) {
