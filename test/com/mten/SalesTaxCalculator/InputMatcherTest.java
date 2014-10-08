@@ -27,6 +27,7 @@ public class InputMatcherTest extends TestCase {
 	private String float_regex;
 	private String integer_regex;
 	private String word_regex;
+	private ArrayList<String> split_input_1;
 	private InputMatcher im = new InputMatcher("Test");
 	
 	
@@ -42,6 +43,7 @@ public class InputMatcherTest extends TestCase {
 		broken_floater  = "2.00 that smell at 5.55 ";
 		broken_integer = "2 imported smell at 5 ";
 		reverso_input = "1.00 box of books at 5";
+		split_input_1 = new ArrayList<String>(Arrays.asList( "1 book at 12.49", "1 music CD at 14.99", "1 chocolate bar at 0.85"));
 		float_regex= "\\d*\\.+\\d*";
 		integer_regex= "(?<=\\s|^)\\d+(?=\\s|$)";
 		word_regex="[a-zA-Z]+";
@@ -195,5 +197,9 @@ public class InputMatcherTest extends TestCase {
 		assertTrue(result);
 	}
 
+	public void testEvaluate(){
+		setup();
+		
+	}
 
 }

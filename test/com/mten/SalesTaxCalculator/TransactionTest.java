@@ -38,6 +38,27 @@ public class TransactionTest extends TestCase {
 		assertTrue( t instanceof Transaction);
 	}
 	
+	
+	//Getters & Setters
+                                                           
 
-
+	public void testGetProducts(){
+		setup();
+	}
+	
+	public void testSetUnits() {
+		setup();
+	}
+	
+	public void testGetUnits() {
+		setup();
+	}
+	
+	public void testSetPrice() {
+		setup();
+	}
+	
+	public void testGetPrice() {
+		setup();
+	}
 }

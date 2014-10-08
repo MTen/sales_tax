@@ -86,4 +86,17 @@ public class InputMatcher {
 		System.out.println(me);
 		return me;
 	}
+	
+	public void evaluate(ArrayList<String> inputArray){
+		//create Batch object
+		for(int i = 0, end = inputArray.size(); i < end; i++ ) {
+			//create Transaction Object
+			String item = inputArray.get(i);
+			productFinder(item);
+			unitFinder(item);
+			priceFinder(item);
+			//put Transaction Object in Batch Object
+		}
+		//Return Batch Object
+	}
 }

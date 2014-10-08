@@ -26,6 +26,11 @@ public class Transaction {
 	}
 
 
+	public void setProduct(String product) {
+		// TODO Auto-generated method stub
+	}
+
+
  
 	
 }
