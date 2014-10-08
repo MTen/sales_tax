@@ -26,14 +26,16 @@ public class InputMatcherTest extends TestCase {
 	private String ERROR_MESSAGE;
 	private String float_regex;
 	private String integer_regex;
+	@SuppressWarnings("unused")
 	private String word_regex;
+	@SuppressWarnings("unused")
 	private ArrayList<String> split_input_1;
 	private InputMatcher im = new InputMatcher("Test");
 	
 	
-	//////////////
-	//Test Setup//
-	//////////////
+	////////////////////////
+	//	Test Setup
+	////////////////////////
 	
 	public void setup() {
 		price_1 = "10.00";

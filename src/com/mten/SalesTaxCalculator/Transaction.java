@@ -12,6 +12,7 @@ public class Transaction {
 	String units;
 	String salesTaxActual;
 	String modifiedPrice;
+	public Double taxRate;
 	
 
 	////////////////////////
@@ -22,6 +23,7 @@ public class Transaction {
 		this.name = this.product = product;
 		this.units = units;
 		this.price = price;
+		this.taxRate = 0.00;
 	}
 
 
