@@ -7,7 +7,6 @@ public class Transaction {
 	
 	String name;
 	String product;
-	String quantity;
 	String price;
 	String salesTaxPercentage;
 	String units;
@@ -26,9 +25,25 @@ public class Transaction {
 	}
 
 
-	public void setProduct(String product) {
-		// TODO Auto-generated method stub
+	public String getName() {
+		return name;
 	}
+
+
+	public String getProduct() {
+		return product;
+	}
+
+
+	public String getPrice() {
+		return price;
+	}
+
+
+	public String getUnits() {
+		return units;
+	}
+
 
 
  

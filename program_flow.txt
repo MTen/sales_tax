@@ -2,12 +2,12 @@ X UserInput takes initial input and checks it for glaring errors (null, non-stri
 	
 X InputParser ABSTRACT_OBJECT_OR_METHOD takes each line from UserInput OBJECT and puts it into an UserInput.inputArray ( .split(\n))
 
-x Have: Array of Strings
-InputMatcher evaluates each index of inputArray (loop)
+X Have: Array of Strings
+X InputMatcher evaluates each index of inputArray (loop)
 
 
-create a Batch object and put a new Transaction object for each 
+X create a Batch object and put a new Transaction object for each 
 	
-CALCULATOR_OBJECT takes each Transaction object, clones it, and mutates the price based on keywords and puts it the Batch object 
+CALCULATOR_OBJECT looks at each Transaction object from the Batch Object, calculates the price based on keywords. 
 	
-Modified Batch Object is printed out for user.
+Batch Object is printed out for user.

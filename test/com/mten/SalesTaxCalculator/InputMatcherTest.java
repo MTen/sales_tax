@@ -188,11 +188,11 @@ public class InputMatcherTest extends TestCase {
 	}
 	
 	
-	public void testProductFinder(){
+	public void testProductArray(){
 		setup();
 		String[] inputSplit = "Imported Box of stuff at".split("\\s+");
 		myArray = new ArrayList<String>(Arrays.asList(inputSplit));
-		userInput = (im.productFinder(input_1));
+		userInput = (im.productArray(input_1));
 		result = userInput.equals(myArray);
 		assertTrue(result);
 	}

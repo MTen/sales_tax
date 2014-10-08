@@ -1,5 +1,6 @@
 package com.mten.SalesTaxCalculator;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.regex.Pattern;
@@ -80,23 +81,31 @@ public class InputMatcher {
 	}
 	
 	//Searches user input for only words comprised of letters
-	public ArrayList<String> productFinder(String userInput) {
+	public ArrayList<String> productArray(String userInput) {
 		String word_regex = "[a-zA-Z]+";
 		ArrayList<String> me = matcherEngine(word_regex, userInput);
-		System.out.println(me);
 		return me;
 	}
 	
+	public String productFinder(ArrayList<String> productArray ){
+		String productName = "";
+		String word;
+		for(int i = 0, end = productArray.size() - 1; i < end; i++ ) {
+			word = productArray.get(i);
+			productName += word;
+		}
+		return productName;
+	}
+	
 	public void evaluate(ArrayList<String> inputArray){
-		//create Batch object
+		//TODO create Batch object
+		Batch b = new Batch();
 		for(int i = 0, end = inputArray.size(); i < end; i++ ) {
-			//create Transaction Object
 			String item = inputArray.get(i);
-			productFinder(item);
-			unitFinder(item);
-			priceFinder(item);
-			//put Transaction Object in Batch Object
+			Transaction t = new Transaction( productFinder(productArray(item)), unitFinder(item), priceFinder(item));
+			//b.add(t);
 		}
 		//Return Batch Object
+		System.out.println(b);
 	}
 }
