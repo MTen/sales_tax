@@ -9,8 +9,9 @@ X InputMatcher evaluates each index of inputArray (loop)
 X create a Batch object and put a new Transaction object for each 
 	
 CALCULATOR_OBJECT looks at each Transaction object from the Batch Object, calculates the price based on keywords. 
-	//Add 0% Tax to Transaction object starting out
-	//Gets the Batch.transactions ArrayList
+X	//Add 0% Tax to Transaction object starting out
+
+Batch OBJECT invokes the Abstract Calculator to iterate over the Batch.Transactions
 	//evaluates IF the name matches the items in a case statement
 		// Imported + 5%
 		// Not Medical, book, food keywords + 10%

@@ -92,20 +92,20 @@ public class InputMatcher {
 		String word;
 		for(int i = 0, end = productArray.size() - 1; i < end; i++ ) {
 			word = productArray.get(i);
-			productName += word;
+			productName += word + " ";
 		}
+		System.out.println("product: " + productName);
 		return productName;
 	}
 	
-	public void evaluate(ArrayList<String> inputArray){
+	public Batch evaluate(ArrayList<String> inputArray){
 		//TODO create Batch object
 		Batch b = new Batch();
 		for(int i = 0, end = inputArray.size(); i < end; i++ ) {
 			String item = inputArray.get(i);
 			Transaction t = new Transaction( productFinder(productArray(item)), unitFinder(item), priceFinder(item));
-			//b.add(t);
+			b.add(t);
 		}
-		//Return Batch Object
-		System.out.println(b);
+		return b;
 	}
 }

@@ -29,5 +29,15 @@ public class Batch {
 	public void add(Transaction t) {
 		this.transactions.add(t);
 	}
+	
+	public ArrayList<Transaction> getTransactions() {
+		return this.transactions;
+	}
+	public void checkForStuff(){
+		ArrayList<Transaction> stuff = this.getTransactions();
+		for(int i = 0, end = stuff.size(); i < end; i++){
+			System.out.println(stuff.get(i).getPrice());
+		}
+	}
 
 }
