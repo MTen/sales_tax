@@ -88,11 +88,11 @@ public class InputMatcher {
 	}
 	
 	public String productFinder(ArrayList<String> productArray ){
-		String productName = "";
-		String word;
-		for(int i = 0, end = productArray.size() - 1; i < end; i++ ) {
+		String productName = productArray.get(0);
+		String word = "";
+		for(int i = 1, end = productArray.size() - 1; i < end; i++ ) {
 			word = productArray.get(i);
-			productName += word + " ";
+			productName += " " + word;
 		}
 		System.out.println("product: " + productName);
 		return productName;
