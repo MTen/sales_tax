@@ -65,7 +65,6 @@ public class InputMatcher {
 		Boolean price_location_check = me.get(0).equals(inputSplitUp[lastInput]);
 		//Checks to make sure only one price is listed in the userInput
 		if (me.size() == 1 && price_location_check) {
-			System.out.println("price: " + me.get(0));
 			return me.get(0);
 		} else {
 			return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
@@ -84,7 +83,6 @@ public class InputMatcher {
 		Boolean unit_location_check = me.get(0).equals(inputSplitUp[0]);
 
 		if (me.size() == 1 && unit_location_check) {
-			System.out.println("units: " + me.get(0));
 			return me.get(0);
 		} else {
 			return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
@@ -107,7 +105,6 @@ public class InputMatcher {
 			word = productArray.get(i);
 			productName += " " + word;
 		}
-		System.out.println("product: " + productName);
 		return productName;
 	}
 	

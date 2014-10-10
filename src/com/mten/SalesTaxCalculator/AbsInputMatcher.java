@@ -73,7 +73,6 @@ public abstract class AbsInputMatcher {
 			Boolean price_location_check = me.get(0).equals(inputSplitUp[lastInput]);
 			//(2)
 			if (me.size() == 1 && price_location_check) {
-				System.out.println("price: " + me.get(0));
 				return me.get(0);
 			} else {
 				return "Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff 5.50)";
@@ -90,7 +89,6 @@ public abstract class AbsInputMatcher {
 			Boolean unit_location_check = me.get(0).equals(inputSplitUp[0]);
 			//(2)Checks to make sure only one integer listed in the userInput so the user is following format.
 			if (me.size() == 1 && unit_location_check) {
-				System.out.println("units: " + me.get(0));
 				return me.get(0);
 			} else {
 				System.out.println("Please enter units as whole numbers and price with exact change. (i.e. 1 box of stuff at 5.50)");
@@ -133,11 +131,10 @@ public abstract class AbsInputMatcher {
 			}else{
 				p = 0;	
 			}
-			System.out.println(b.name);
 			for(i = p, end = productArray.size(); i < end; i++ ) {
 				String item = productArray.get(i);
 				Transaction t = new Transaction( productFinder(productArray(item)), unitFinder(item), priceFinder(item));
-				System.out.println(t.product);
+
 				b.add(t);
 			}
 			return b;

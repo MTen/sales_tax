@@ -13,6 +13,9 @@ public class Batch {
 	
 	String name;
 	ArrayList<Transaction> transactions;
+	BigDecimal totalCost;
+	BigDecimal totalTax;
+	BigDecimal totalTaxes;
 	
 	////////////////////////
 	//	Constructor
@@ -22,6 +25,8 @@ public class Batch {
 		Date d = new Date();
 		name = "Batch: " + d;
 		transactions = new ArrayList<Transaction>();
+		totalCost = new BigDecimal("0").setScale(2);
+		totalTax = new BigDecimal("0").setScale(2);
 	}
 	
 	////////////////////////
@@ -36,22 +41,89 @@ public class Batch {
 	public ArrayList<Transaction> getTransactions() {
 		return this.transactions;
 	}
+	
+	public void setTaxes(){
+		ArrayList<Transaction> stuff = this.getTransactions();
+		for (int i = 0; i < stuff.size(); i++) {
+			Transaction item = stuff.get(i);
+			item.calculateTaxes();
+		}
+	}
+	
+	////////////////////////
+	//	Total Cost
+	////////////////////////
+	
+	public void totalCost(){
+		totalCost = getTotalCost();
+		for(int i = 0, end = this.transactions.size(); i < end; i++) {
+			BigDecimal s = this.transactions.get(i).modifiedPrice;
+			totalCost = totalCost.add(s);
+		}
+		setTotalCost(totalCost);
+	}
+	
+	public BigDecimal getTotalCost() {
+	return totalCost;
+	}
 
+	public void setTotalCost(BigDecimal totalCost) {
+		this.totalCost = totalCost;
+	}
+
+	////////////////////////
+	//	Total Taxes
+	////////////////////////
+
+	public void totalTaxes(){
+		totalTaxes = getTotalTax();
+		
+		for(int i = 0, end = this.transactions.size(); i < end; i++) {
+			BigDecimal s = this.transactions.get(i).salesTaxActual;
+			totalTaxes = totalTaxes.add(s);
+		}
+		setTotalTax(totalTaxes);
+	}
+	
+	public BigDecimal getTotalTax() {
+		return totalTax;
+	}
+
+	public void setTotalTax(BigDecimal totalTax) {
+		this.totalTax = totalTax;
+	}
+	
 	
 
+	public String getBatchName() {
+		return name;
+	}
 	
-	public String showOutput(){
+	public void showOutput(){
+		String outputName = getBatchName().replaceAll("\\bInput\\b | \\binput\\b", "Output");
+		System.out.println(outputName);
 		for(int i = 0; i < this.transactions.size(); i++){
 			Transaction s = this.transactions.get(i);
-			System.out.println(s.product + ": " + s.price);
-			System.out.println(s.salesTaxActual);	
+			System.out.println("\t" +s.units + s.product + ": " + s.modifiedPrice);
 		}
-		return null;
+		System.out.println("\tSales Taxes: " + getTotalTax());
+		System.out.println("\tTotal Cost: " + getTotalCost());
 	}
-
-	public String output() {
-		//TODO stuff
-		return null;
+	
+	public void outPutHelper() {
+		name = name.replaceAll("\\binput\\b?i", "Output");
 	}
+	
+	////////////////////////
+	//	Output & Helpers
+	////////////////////////
 
+	public void batchTaxesandShowOutput(Batch b){	
+			b.setTaxes();
+			//Now the batch wants to show off all its spiffy info
+			b.totalCost();
+			b.totalTaxes();
+			b.showOutput();
+	}
+	
 }

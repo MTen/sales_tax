@@ -5,7 +5,7 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ InputMatcherTest.class, TransactionTest.class,
+@SuiteClasses({ AbsInputMatcherTest.class, TransactionTest.class,
 		UserInputTest.class, BatchTest.class,})
 public class AllTests {
 

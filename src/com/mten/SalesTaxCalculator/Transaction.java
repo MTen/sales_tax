@@ -78,12 +78,14 @@ public class Transaction {
 		}
 	}
 
-
+	//MAIN METHOD
 	public void calculateTaxes() {
+		this.setExemptAndImported();
+		this.setTaxRate();
 		BigDecimal t = this.taxRate;
 		BigDecimal p = this.price;
 		this.salesTaxActual = MyCalculator.multiplyTax(t, p);
-		
+		this.addTaxToPrice(); 
 	}
 
 

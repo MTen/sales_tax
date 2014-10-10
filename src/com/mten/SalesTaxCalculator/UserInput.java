@@ -48,7 +48,6 @@ public class UserInput {
 			System.out.println("Can not be null or empty value, please try again");
 			return "Can not be null or empty value, please try again";
 		} else {
-			System.out.println("Items Accepted");
 			input.trim();
 			this.starting = input.trim();
 			return "ok";
@@ -76,6 +75,7 @@ public class UserInput {
 		String string = this.starting;
 		this.inputArray = inputParser(string);
 		for (int i = 0; i < this.inputArray.size(); i++) {
+			//Removing all hidden escape characters
 			this.inputArray.get(i).replaceAll("[^ -~]", "");
 		}
 	}
