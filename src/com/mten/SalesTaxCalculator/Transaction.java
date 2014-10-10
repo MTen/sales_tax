@@ -32,6 +32,9 @@ public class Transaction {
 		this.taxRate = new BigDecimal("0.00").setScale(2);
 	}
 
+	////////////////////////
+	//	Getter & Setter
+	////////////////////////
 
 	public String getName() {
 		return name;
@@ -51,6 +54,10 @@ public class Transaction {
 	public String getUnits() {
 		return units;
 	}
+
+	////////////////////////
+	//	Methods
+	////////////////////////
 
 	public void setExemptAndImported(){
 		String p = this.product;

@@ -21,6 +21,8 @@ public class UserInputTest extends TestCase {
 	String ERROR_MESSAGE;
 	String result;
 	ArrayList<String> split_input_1;
+	String input_4;
+	ArrayList<String> split_input_2;
 	
 	////////////////////////
 	//	Setup
@@ -29,7 +31,9 @@ public class UserInputTest extends TestCase {
 		input_1 = "1 book at 12.49\n1 music CD at 14.99\n1 chocolate bar at 0.85";
 		input_2 = "1 imported box of chocolates at 10.00\n1 imported bottle of perfume at 47.50";
 		input_3 = "1 imported bottle of perfume at 27.99\n1 bottle of perfume at 18.99\n1 packet of headache pills at 9.75\n1 box of imported chocolates at 11.25";
+		input_4 = "\nInput 1:\n1 book at 12.49\n1 music CD at 14.99\n1 chocolate bar at 0.85";
 		split_input_1 = new ArrayList<String>(Arrays.asList( "1 book at 12.49", "1 music CD at 14.99", "1 chocolate bar at 0.85"));
+		split_input_2 = new ArrayList<String>(Arrays.asList( "Input 1:", "1 book at 12.49", "1 music CD at 14.99", "1 chocolate bar at 0.85"));
 		null_input = null;
 		empty_input = "";
 		ERROR_MESSAGE = "Can not be null or empty value, please try again";
@@ -50,12 +54,6 @@ public class UserInputTest extends TestCase {
 	//	Methods
 	////////////////////////
 	
-	public void testNullInput() { 
-		setup();
-		result = ui.examine(null_input);
-		assertEquals(ERROR_MESSAGE, result);
-	}
-	
 	public void testEmptyInput() {
 		setup();
 		result = ui.examine(empty_input);
@@ -70,21 +68,28 @@ public class UserInputTest extends TestCase {
 	
 	public void testSetInput() {
 		setup();
-		ui.setInput(input_1);
+		ui.examine(input_1);
 		assertEquals(input_1, ui.starting);
+	}
+
+	public void testNullSetInput() { 
+		setup();
+		result = ui.examine(null_input);
+		assertEquals(ERROR_MESSAGE, result);
 	}
 	
 	public void testInputParser() {
 		setup();
-		ui.setInput(input_1);
+		ui.examine(input_1);
 		ArrayList<String> result = ui.inputParser(ui.starting);
 		assertEquals(result, split_input_1);
 	}
 	
 	public void testSetInputArray() {
 		setup();
-		ui.setInputArray(input_1);
-		ArrayList<String> result = split_input_1;
+		ui.examine(input_4);
+		ui.setInputArray();
+		ArrayList<String> result = split_input_2;
 		assertEquals(result, ui.inputArray);
 	}
 

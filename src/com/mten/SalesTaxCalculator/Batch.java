@@ -49,4 +49,9 @@ public class Batch {
 		return null;
 	}
 
+	public String output() {
+		//TODO stuff
+		return null;
+	}
+
 }
