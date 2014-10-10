@@ -1,5 +1,7 @@
 package com.mten.SalesTaxCalculator;
 
+import java.math.BigDecimal;
+
 public class Transaction {
 	////////////////////////
 	//	Fields
@@ -7,12 +9,13 @@ public class Transaction {
 	
 	String name;
 	String product;
-	String price;
-	String salesTaxPercentage;
+	BigDecimal price;
+	BigDecimal taxRate;
 	String units;
-	String salesTaxActual;
-	String modifiedPrice;
-	public Double taxRate;
+	BigDecimal salesTaxActual;
+	BigDecimal modifiedPrice;
+	boolean imported;
+	boolean exempt;
 	
 
 	////////////////////////
@@ -20,10 +23,13 @@ public class Transaction {
 	////////////////////////
 	
 	public Transaction(String product, String units, String price) {
-		this.name = this.product = product;
+		this.name = product;
+		this.product = product;
 		this.units = units;
-		this.price = price;
-		this.taxRate = 0.00;
+		this.price = new BigDecimal(price).setScale(2);
+		this.imported = false;
+		this.exempt = false;
+		this.taxRate = new BigDecimal("0.00").setScale(2);
 	}
 
 
@@ -37,7 +43,7 @@ public class Transaction {
 	}
 
 
-	public String getPrice() {
+	public  BigDecimal getPrice() {
 		return price;
 	}
 
@@ -46,7 +52,39 @@ public class Transaction {
 		return units;
 	}
 
+	public void setExemptAndImported(){
+		String p = this.product;
+		if (AbsInputMatcher.checkExempt(p) == true) {
+			this.exempt = true;
+		}
+		if (AbsInputMatcher.checkImported(p) == true){
+			this.imported = true;
+		}
+	}
+		
+	public void setTaxRate() {
+		if (this.exempt == false) {
+			this.taxRate = this.taxRate.add(new BigDecimal("0.10"));
+		}
+		if (this.imported == true) {
+			this.taxRate = this.taxRate.add(new BigDecimal("0.05"));
+		}
+	}
 
+
+	public void calculateTaxes() {
+		BigDecimal t = this.taxRate;
+		BigDecimal p = this.price;
+		this.salesTaxActual = MyCalculator.multiplyTax(t, p);
+		
+	}
+
+
+	public void addTaxToPrice() {
+		BigDecimal t = this.salesTaxActual;
+		BigDecimal p = this.price;
+		this.modifiedPrice = p.add(t);
+	}
 
  
 	

@@ -87,6 +87,7 @@ public class InputMatcher {
 		return me;
 	}
 	
+	//Getting rid of the word at
 	public String productFinder(ArrayList<String> productArray ){
 		String productName = productArray.get(0);
 		String word = "";
@@ -98,6 +99,8 @@ public class InputMatcher {
 		return productName;
 	}
 	
+	
+	// Evaluates the 
 	public Batch evaluate(ArrayList<String> inputArray){
 		//TODO create Batch object
 		Batch b = new Batch();
@@ -107,5 +110,43 @@ public class InputMatcher {
 			b.add(t);
 		}
 		return b;
+	}
+	
+	// uses matcher engine w string to imported
+	public Boolean verifyImported(String s) {
+		String string = s.toLowerCase();
+		if (matcherEngine("imported", string).contains("imported")) {
+			System.out.println("true");
+			return true;
+		} else {
+			System.out.println("false");
+			return false;
+		}
+	}
+	
+	public ArrayList<String> exemptItems(){
+		ArrayList<String> exemptItems = new ArrayList<String>(Arrays.asList("book", "pills", "chocolate", "chocolates")); 
+		return exemptItems;
+	}
+	
+	public Boolean checkExempt(String s) {
+		String string = s.toLowerCase();
+		ArrayList<String> exemptItems = exemptItems();
+		ArrayList<String> productArray = productArray(string);
+		Boolean result = false;
+		for(int i = 0, end = productArray.size(); i < end; i++){
+			String thisProduct = productArray.get(i);
+			for (String x: exemptItems) {
+				if (thisProduct.equals(x)) {
+					System.out.println("Item is exempt");
+					return true;
+				}else{
+					result = false;
+				}
+			}
+		
+		}
+		System.out.println("Item is not exempt");
+		return result;
 	}
 }

@@ -25,7 +25,6 @@ public abstract class MyCalculator {
 	//mode determines if it needs to be used for UP or down or what not.
 	public static BigDecimal round(BigDecimal value, BigDecimal increment,
             RoundingMode roundingMode) {
-		
 		// Signum checks to see if the number is greater than zero. Returns +1 if greater -1 for less than.
 		if (increment.signum() == 0) {
 			// 0 increment does not make much sense, but prevent division by 0
@@ -37,15 +36,11 @@ public abstract class MyCalculator {
     	}
 	}
 
-	public static BigDecimal multiplyPrice(String string1, String string2) {
-		BigDecimal arg_1 = new BigDecimal(string1).setScale(2);
-		System.out.println(arg_1);
-		BigDecimal arg_2 = new BigDecimal(string2).setScale(2);
-		System.out.println(arg_2);
+	public static BigDecimal multiplyTax(BigDecimal bd1, BigDecimal bd2) {
+		BigDecimal arg_1 = bd1.setScale(2);
+		BigDecimal arg_2 = bd2.setScale(2);
 		BigDecimal arg_3 = arg_1.multiply(arg_2);
-		System.out.println(arg_3);
 		BigDecimal result = round(arg_3, new BigDecimal("0.05"), RoundingMode.UP);
-		System.out.println(result);
 		return result;
 	}
 }

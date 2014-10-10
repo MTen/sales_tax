@@ -30,9 +30,11 @@ public class BatchTest extends TestCase {
 		b.add(t_2);
 		System.out.println(b.name);
 		assertEquals(2, b.transactions.size());
-		for (int i = 0; i < b.transactions.size(); i++) {
-			System.out.println(b.transactions.get(i).name);
-		}
+	}
+	
+	public void testOutput(){
+		
+		assertEquals()
 	}
 
 }
