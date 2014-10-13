@@ -22,8 +22,7 @@ public class Batch {
 	////////////////////////
 	
 	public Batch() {
-		Date d = new Date();
-		name = "Batch: " + d;
+		name = "Batch: ";
 		transactions = new ArrayList<Transaction>();
 		totalCost = new BigDecimal("0").setScale(2);
 		totalTax = new BigDecimal("0").setScale(2);
@@ -100,19 +99,16 @@ public class Batch {
 	}
 	
 	public void showOutput(){
-		String outputName = getBatchName().replaceAll("\\bInput\\b | \\binput\\b", "Output");
+		String outputName = getBatchName().replaceAll("\\bInput\\b | \\binput\\b", "Output ");
 		System.out.println(outputName);
 		for(int i = 0; i < this.transactions.size(); i++){
 			Transaction s = this.transactions.get(i);
-			System.out.println("\t" +s.units + s.product + ": " + s.modifiedPrice);
+			System.out.println(s.units + s.product + ": " + s.modifiedPrice);
 		}
-		System.out.println("\tSales Taxes: " + getTotalTax());
-		System.out.println("\tTotal Cost: " + getTotalCost());
+		System.out.println("Sales Taxes: " + getTotalTax());
+		System.out.println("Total Cost: " + getTotalCost());
 	}
 	
-	public void outPutHelper() {
-		name = name.replaceAll("\\binput\\b?i", "Output");
-	}
 	
 	////////////////////////
 	//	Output & Helpers

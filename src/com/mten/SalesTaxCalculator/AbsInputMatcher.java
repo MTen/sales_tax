@@ -126,7 +126,7 @@ public abstract class AbsInputMatcher {
 			Batch b = new Batch();
 			int i, end, p;
 			if (AbsInputMatcher.matcherEngineBoolean("input+\\s+\\d*+\\s*\\:", productArray.get(0))){
-				b.name = productArray.get(0) + " " + new Date();
+				b.name = productArray.get(0) + " ";
 				p = 1;
 			}else{
 				p = 0;	
