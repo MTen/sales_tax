@@ -1,9 +1,12 @@
 package com.mten.SalesTaxCalculator;
 
+import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Scanner;
 
 import javax.lang.model.type.NullType;
+import javax.print.DocFlavor.URL;
 
 // Afterthoughts
 // I would probably change this to an Abstract class and have it instantiate a batch object
@@ -80,8 +83,6 @@ public class UserInput {
 		}
 	}
 	
-	
-	
-	
-	
+	// considering making this take a parameter for the location of the "UserInput.txt" file.
+
 }

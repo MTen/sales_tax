@@ -3,6 +3,8 @@ package com.mten.SalesTaxCalculator;
 import java.util.ArrayList;
 import java.util.Arrays;
 
+import javax.lang.model.type.NullType;
+
 	public class MyPlayground {
 		@SuppressWarnings("unused")
 		public static void main(String[] args) throws Exception{
@@ -20,24 +22,37 @@ import java.util.Arrays;
 			String input_2 = "\nInput 2:\n1 imported box of chocolates at 10.00\n1 imported bottle of perfume at 47.50\n";
 			String input_3 = "\nInput 3:\n1 imported bottle of perfume at 27.99\n1 bottle of perfume at 18.99\n1 packet of headache pills at 9.75\n1 box of imported chocolates at 11.25\n";
 						
-			System.out.println(input_1 + input_2 + input_3);
-			ArrayList<String> the_OC_yo_meaning_origonal_content = new ArrayList<String>(Arrays.asList( input_1, input_2, input_3));
+//			System.out.println(input_1 + input_2 + input_3);
+//			ArrayList<String> the_OC_yo_meaning_origonal_content = new ArrayList<String>(Arrays.asList( input_1, input_2, input_3));
+//			
+//			//UserInput OBJECT accepts input and adds it to the UI object
+//			//Abstract Input Matcher examines UserIput and creates a batch object with baby transactions.
+//			//Transaction class comes in and is all like dood I R GUNNA calculates stuff using the Abstract Calculator thingy.
+//
+//			ui.initiate(input_1);			
+//			Batch a = AbsInputMatcher.evaluate(ui.inputArray);
+//			ReceiptRunner.showTime(a);
+//			
+//			ui.initiate(input_2);
+//			Batch b = AbsInputMatcher.evaluate(ui.inputArray);
+//			ReceiptRunner.showTime(b);
+//			
+//			ui.initiate(input_3);
+//			Batch c = AbsInputMatcher.evaluate(ui.inputArray);
+//			ReceiptRunner.showTime(c);
 			
-			//UserInput OBJECT accepts input and adds it to the UI object
-			//Abstract Input Matcher examines UserIput and creates a batch object with baby transactions.
-			//Transaction class comes in and is all like dood I R GUNNA calculates stuff using the Abstract Calculator thingy.
-
-			ui.initiate(input_1);			
-			Batch a = AbsInputMatcher.evaluate(ui.inputArray);
-			ReceiptRunner.showTime(a);
+			String text = "INPUT:" + input_1 + input_2 + input_3;
 			
-			ui.initiate(input_2);
-			Batch b = AbsInputMatcher.evaluate(ui.inputArray);
-			ReceiptRunner.showTime(b);
 			
-			ui.initiate(input_3);
-			Batch c = AbsInputMatcher.evaluate(ui.inputArray);
-			ReceiptRunner.showTime(c);
+			ui.getTextDocument();
+//			for (int i = text2.size()-1; i >= 0; i--) {
+//			    if (text2.get(i).length() == 0 || NullType) {
+//			    	text2.remove(text2.get(i));
+//			    }
+//			}
 			
+//			for(String s : text2)
+//			    System.out.println("["+ s +"]");
+//			System.out.println(text2.get(0).getClass());
 		} 
 	}
