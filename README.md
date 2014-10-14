@@ -1,7 +1,7 @@
 SalesTax
 ========
 
-This is my first venture into programming java in response to the below coding challenge.  
+This is my first venture into learning java in response to the below coding challenge.  
 This is a simple sales tax caluclator using regex to identify patterns from user input.   
 
 I used this as an opportunity to not only learn java but also JUnit and as an exercise  
